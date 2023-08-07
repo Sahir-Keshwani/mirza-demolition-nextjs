@@ -1,3 +1,5 @@
+import React from "react";
+
 const CollapseBenefit = [
     {
         heading: "We Provide Better Safety Standards",

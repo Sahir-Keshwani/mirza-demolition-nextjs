@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Data from "../Data/workCategories";
+import Data from "../../Data/workCategories";
 import { GiDigDug } from "react-icons/gi";
 
 import { Playfair_Display } from "next/font/google";
