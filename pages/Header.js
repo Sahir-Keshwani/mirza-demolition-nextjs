@@ -54,7 +54,7 @@ const Header = () => {
                 affordable rates <br className="md:hidden lg:block" /> since 30+
                 years
               </p>
-              <button className="border-0 bg-amber-500/75 hover:bg-black/75 hover:text-amber-500 text-black font-bold p-2 md:p-3  rounded-xl shadow text-sm md:text-sm absolute md:static bottom-12 sm:bottom-32 left-[35%]">
+              <button className="border-0 bg-amber-500/75 hover:bg-black/75 hover:text-amber-500 text-black font-bold p-2 md:p-3  rounded-xl shadow text-sm md:text-sm absolute md:static bottom-12 sm:bottom-32 left-[35%] ">
                 Discover More
               </button>
             </div>

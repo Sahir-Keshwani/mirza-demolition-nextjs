@@ -41,7 +41,7 @@ const AboutUs = () => {
               <h2 className="ps-2 mb-4 md:mb-0  inline-block font-medium uppercase">
                 WHO WE ARE?
               </h2>
-              <h3 className=" mt-4 font-bold hover:text-amber-400 mx-auto text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+              <h3 className=" mt-4 font-bold hover:text-amber-500 mx-auto text-xl md:text-2xl lg:text-3xl xl:text-4xl"
                 style={font.style}>
                 Demolition Solutions Provider
               </h3>
@@ -62,27 +62,27 @@ const AboutUs = () => {
                     width={200}
                     height={100}
                     alt="about-img"
-                    className="md:w-[60%] lg:w-[80%] h-auto mx-auto lg:mx-0 pb-6 lg:pb-0"
+                    className="md:w-[100%] lg:w-[80%]  h-auto mx-auto lg:mx-0 pb-6 lg:pb-0 xl:pt-0 lg:pt-3 xl:ms-0 lg:-ms-6"
                   />
                 </span>
 
                 <span className="md:pe-0 lg:pt-1 xl:pt-5 font-bold lg:text-xl text-center lg:text-start relative top-0  right-0 lg:right-10 ">
                   <ul className=" space-y-2">
                     <li>
-                      <BiSolidCheckCircle className=" inline-block text-amber-400 xl:text-3xl md:text-xl " />
-                      <p className=" inline-block ps-2 text-base sm:text-lg md:text-[15px] lg:text-[12px] xl:text-[14px] underline">
+                      <BiSolidCheckCircle className=" inline-block text-amber-500 xl:text-3xl md:text-xl " />
+                      <p className=" inline-block ps-2 text-base sm:text-lg md:text-[15px] lg:text-[10px] xl:text-[14px] underline">
                         Fabrication Work Service
                       </p>
                     </li>
                     <li>
-                      <BiSolidCheckCircle className=" inline-block text-amber-400 xl:text-3xl md:text-xl " />
-                      <p className=" inline-block ps-2 text-base sm:text-lg md:text-[15px] lg:text-[12px] xl:text-[14px] underline">
+                      <BiSolidCheckCircle className=" inline-block text-amber-500 xl:text-3xl md:text-xl " />
+                      <p className=" inline-block ps-2 text-base sm:text-lg md:text-[15px] lg:text-[10px] xl:text-[14px] underline">
                         High Rise Demolition Service
                       </p>
                     </li>
                     <li>
-                      <BiSolidCheckCircle className=" inline-block text-amber-400 xl:text-3xl md:text-xl " />
-                      <p className=" inline-block ps-2  text-base sm:text-lg md:text-[15px] lg:text-[12px] xl:text-[14px] underline">
+                      <BiSolidCheckCircle className=" inline-block text-amber-500 xl:text-3xl md:text-xl " />
+                      <p className=" inline-block ps-2  text-base sm:text-lg md:text-[15px] lg:text-[10px] xl:text-[14px] underline">
                         Earth Moving Demolition Service
                       </p>
                     </li>
@@ -90,6 +90,14 @@ const AboutUs = () => {
                 </span>
               </span>
             </div>
+              <div className="ps-0 md:ps-10 mt-6">
+              <button
+                type="submit"
+                className=" uppercase block mx-auto text-xl px-6 py-2 border-2 border-amber-500 hover:bg-amber-500 hover:text-white rounded-full"
+              >
+                Know More
+              </button>
+              </div>
           </div>
         </div>
       </div>

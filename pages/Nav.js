@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 // Fonts
 import { Dosis } from "next/font/google";
-const dosis = Dosis({ subsets: ["latin"], weight: "400" });
+const dosis = Dosis({ subsets: ["latin"], weight: "600" });
 
 // Icons
 import {
@@ -18,21 +18,42 @@ import { FiPhoneCall, FiMenu } from "react-icons/fi";
 
 const Nav = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
-
   const handleNav = () => {
     setMobileMenu(!mobileMenu);
   };
 
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setMobileMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+
+
+  let menuRef = useRef();
+
   return (
-    <nav>
-      <div className="border-b border-gray-700 dark:border-white bg-slate-300 dark:bg-stone-800 sticky top-0 font-semibold dark:font-medium py-2 xl:px-10 z-10">
-        <div className=" flex items-center justify-around w-full h-20">
+    <nav className=" sticky top-0 z-10">
+      <div className="border-b border-white bg-amber-500 text-black top-0 font-medium py-2 xl:px-10 z-10">
+        <div className=" flex items-center justify-around w-full h-16">
           {/* Responsive hamburger button */}
-          <div className={mobileMenu ? "ms-[80%] " : "ms-0"}>
+          <div
+            className={
+              mobileMenu ? "ms-[80%] ease-in duration-500 delay-100" : "ms-0 "
+            }
+          >
             <FiMenu
-              className="md:hidden flex justify-start text-white"
+              className="md:hidden flex justify-start"
               onClick={handleNav}
-              size={30}
+              size={35}
             />
           </div>
 
@@ -40,9 +61,10 @@ const Nav = () => {
           <div
             className={
               mobileMenu
-                ? "fixed  top-0 left-0 w-[70%] md:hidden h-[120vh] sm:h-[115vh] border-r border-gray-700 dark:border-white bg-slate-300 dark:bg-zinc-700 px-10 transition ease-in duration-0 text-white"
+                ? "fixed  top-0 left-0 md:hidden h-[120vh] sm:h-[115vh] border-r border-white bg-amber-500 px-10 transition ease-in duration-200 "
                 : "fixed left-[-100%] top-0 p-10 ease-in  "
             }
+            ref={menuRef}
           >
             <div className="flex justify-end items-center w-full pt-4">
               <div onClick={handleNav} className=" m-4 cursor-pointer">
@@ -50,12 +72,15 @@ const Nav = () => {
               </div>
             </div>
 
-            <h1 className="py-8 text-2xl sm:text-3xl font-semibold   text-center">
+            <h1
+              className="py-8 text-2xl sm:text-3xl font-semibold   text-center"
+              style={dosis.style}
+            >
               Mirza Demolition
             </h1>
 
-            <div className=" flex-col py-4 sm:px-6">
-              <ul className=" space-y-8">
+            <div className=" flex-col py-4 sm:px-6 font-bold">
+              <ul className=" space-y-10 w-fit">
                 <li onClick={() => setMobileMenu(false)}>
                   <Link href="/">
                     <AiOutlineHome className=" inline-block mx-4" size={20} />
@@ -86,7 +111,7 @@ const Nav = () => {
                 <li onClick={() => setMobileMenu(false)}>
                   <Link href="/">
                     <GiBowlingPropulsion
-                      className=" inline-block mx-4"
+                      className="inline-block mx-4"
                       size={20}
                     />
                     Expertise
@@ -94,7 +119,7 @@ const Nav = () => {
                 </li>
                 <li onClick={() => setMobileMenu(false)}>
                   <Link href="/">
-                    <FiPhoneCall className=" inline-block mx-4" size={20} />
+                    <FiPhoneCall className="inline-block mx-4" size={20} />
                     Contact
                   </Link>
                 </li>
@@ -102,61 +127,50 @@ const Nav = () => {
             </div>
           </div>
 
-          <div className="dark:text-white">
-            <ul className="hidden md:flex justify-center text-base lg:text-xl mx-6  lg:mx-auto xl:space-x-20 lg:space-x-12 md:space-x-6 lg:px-8 ">
-              <li className="pb-6 lg:pb-0">
-                <Link href="/">
-                  <AiOutlineHome className="hidden lg:inline-block mb-2 md:ms-[1.2rem]" />{" "}
-                  <br />
+          <div className="text-black font-semibold">
+            <ul className="hidden md:flex justify-center text-base lg:text-xl mx-6  lg:mx-auto xl:space-x-20 lg:space-x-10 md:space-x-6 md:pe-6">
+              <li>
+                <Link href="/" className="">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <AiFillInfoCircle className=" hidden lg:inline-block mb-2 md:ms-[1.2rem]" />{" "}
-                  <br />
+                <Link href="/" className="">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <GiGroundbreaker className=" hidden lg:inline-block mb-2 md:ms-[1.2rem]" />{" "}
-                  <br />
+                <Link href="/" className="">
                   Projects
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className={'{mobileMenu ? "hidden" : "block"} dark:text-white'}>
+          <Link href="/" className={mobileMenu ? "hidden" : "block"}>
+            {/* <div className={mobileMenu ? "ms-[0%]" : "ms-0"}> */}
             <h1
-              className="flex items-center justify-center w-full text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl  text-center  md:m-auto sm:ms-[50%] ms-[10%]"
+              className="flex items-center justify-center  w-full text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl  text-center  md:ms-auto sm:ms-[50%] ms-[10%]"
               style={dosis.style}
             >
               Mirza Demolition
             </h1>
-          </div>
+          </Link>
 
-          <div className="dark:text-white">
-            <ul className="hidden md:flex justify-center text-base lg:text-xl mx-6  lg:mx-auto xl:space-x-20 lg:space-x-12 md:space-x-6 lg:px-8 ">
-              <li className="pb-6 lg:pb-0">
-                <Link href="/">
-                  <MdAssignment className=" hidden lg:inline-block mb-2 md:ms-6" />
-                  <br />
+          <div className="text-black font-semibold">
+            <ul className="hidden md:flex justify-center text-base lg:text-xl mx-6  lg:mx-auto xl:space-x-20 lg:space-x-10 md:space-x-6 md:ps-6 ">
+              <li>
+                <Link href="/" className="">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <GiBowlingPropulsion className=" hidden lg:inline-block mb-2 md:ms-6" />
-                  <br />
+                <Link href="/" className="">
                   Expertise
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <FiPhoneCall className=" hidden lg:inline-block mb-2 md:ms-6" />
-                  <br />
+                <Link href="/" className="">
                   Contact
                 </Link>
               </li>

@@ -5,9 +5,11 @@ import Data from "../../Data/workCategories";
 import { GiDigDug } from "react-icons/gi";
 
 import { Playfair_Display } from "next/font/google";
+import WorkCards from "./WorkCards";
 const font = Playfair_Display({ subsets: ["latin"], weight: "600" });
 
 const WorkCategories = () => {
+
   return (
     <section>
       <div
@@ -36,46 +38,7 @@ const WorkCategories = () => {
             demolition work and projects
           </h3>
         </div>
-
-        <div className="relative top-0">
-          <div className=" flex flex-wrap justify-around items-center gap-0 space-y-24 px-12 ">
-            {/* Card */}
-            {Data.map((item, index) => (
-              <div
-                key={index}
-                className="mt-24 bg-contain w-[400px] h-[400px] rounded-2xl relative"
-              >
-                <Image
-                  src={item.cardImg}
-                  alt="card image"
-                  fill={true}
-                  sizes="auto"
-                  className="mx-auto overflow-hidden w-full h-full rounded-2xl object-cover"
-                />
-
-                <div className=" absolute bottom-0  ps-6 bg-slate-400  dark:bg-stone-800 w-full flex flex-wrap justify-between gap-0 items-center rounded-b-2xl py-2">
-                  <div className="">
-                    <Link href="/">
-                      <h3 className=" font-semibold col-span-2 inline-block text-lg sm:text-2xl dark:text-white">
-                        {item.name}
-                      </h3>
-                    </Link>
-                  </div>
-                  <div className="p-4 ">
-                    <Image
-                      src={item.logoImg}
-                      width={50}
-                      height={50}
-                      fill={false}
-                      alt="logo"
-                      className=" object-contain inline-block w-10 text-5xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <WorkCards/>
       </div>
     </section>
   );
